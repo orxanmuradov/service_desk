@@ -1,0 +1,401 @@
+/* Custom Styles for Login Page */
+
+/* Body background color */
+body {
+    background-color: #f8f9fa; /* Light grey background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A modern, clean font */
+    overflow-x: hidden; /* Ensure no horizontal scrollbar */
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+}
+
+/* Center content vertically and horizontally */
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+/* Card styling */
+.card {
+    border: none; /* No border for a cleaner look */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.card-title {
+    color: #343a40; /* Dark text for the title */
+    font-weight: 600; /* Slightly bolder title */
+}
+
+/* Form control styling */
+.form-control {
+    border-radius: 5px; /* Rounded corners for input fields */
+    border-color: #ced4da; /* Light grey border */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Primary blue on focus */
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Light blue shadow on focus */
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff; /* Primary blue button */
+    border-color: #007bff;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3;
+}
+
+/* Link styling */
+.text-decoration-none {
+    color: #007bff; /* Primary blue for links */
+}
+
+.text-decoration-none:hover {
+    text-decoration: underline !important; /* Underline on hover */
+}
+
+/* Alert message styling */
+.alert {
+    border-radius: 5px;
+}
+
+/* Specific styling for validation feedback */
+.form-control.is-invalid {
+    border-color: #dc3545; /* Red border for invalid fields */
+}
+.invalid-feedback {
+    color: #dc3545; /* Red text for error messages */
+    font-size: 0.875em; /* Smaller font for feedback */
+    display: block; /* Ensure it's always block for Bootstrap feedback classes */
+}
+
+
+/* Custom Styles for Dashboard Layout */
+
+:root {
+    --header-height: 70px; /* Navbarın hündürlüyü */
+}
+
+/* BODY ve WRAPPER deyişiklikleri */
+body {
+    background-color: #f8f9fa; /* Light grey background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A modern, clean font */
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    display: flex; /* Flexbox ile layout idaresi */
+}
+
+#wrapper {
+    display: flex; 
+    width: 100%; 
+    min-height: 100vh;
+}
+
+#sidebar-wrapper {
+    width: 15rem; /* Default width for sidebar */
+    min-width: 15rem; /* Minimum width to prevent shrinking */
+    transition: margin .25s ease-out; /* Smooth transition for toggle */
+    background-color: #1C2E4A; /* Tünd Göy rəng */
+    color: #ffffff; /* Yazılar ağ rəngdə olsun */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.6); /* Daha aydın və tünd kölgə */
+    
+    position: fixed; /* Kenarda sabit qalması üçün */
+    top: 0; /* Yuxarıdan sıfır mövqedə başlasın */
+    left: 0; /* Soldan sıfır mövqedə başlasın */
+    height: 100vh; /* Tam viewport hündürlüyünü tutsun */
+    overflow-y: auto; /* Əgər məzmun çox olarsa, dikey scroll etsin */
+    z-index: 1000; /* Digər kontentin üzərində görünməsini təmin edir */
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 1.7rem 1.25rem; /* ~27.2px yuxarı/aşağı boşluq */
+    font-size: 1.4rem; /* Slightly larger heading */
+    color: #ffffff; /* Ağ mətn */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Daha aydın border */
+}
+
+#sidebar-wrapper .list-group {
+    width: 100%; /* Occupy full width of sidebar */
+}
+
+#sidebar-wrapper .list-group-item {
+    background-color: transparent; /* Transparent background */
+    color: #ffffff; /* Ağ mətn */
+    border: none;
+    padding: 1rem 1.5rem; /* Increased padding */
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex; /* Flex for icon and text alignment */
+    align-items: center;
+}
+
+#sidebar-wrapper .list-group-item i {
+    margin-right: 0.75rem; /* Space between icon and text */
+}
+
+#sidebar-wrapper .list-group-item:hover,
+#sidebar-wrapper .list-group-item:focus {
+    background-color: #2C4260; /* Hoverdə bir az açıq tünd göy rəng */
+    color: #fff; /* Ağ mətn on hover/focus */
+    text-decoration: none; /* No underline */
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: #007bff; /* Aktiv link üçün primary blue */
+    color: #fff;
+    border-radius: 5px;
+    margin: 0 10px; /* Slight margin for active state */
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3); /* Subtle shadow for active item */
+}
+
+/* Sub-menu styling for departments */
+#departmentsCollapse .list-group-item {
+    padding-left: 3.5rem !important; /* Indent sub-menu items */
+    font-size: 1rem;
+    color: #ffffff; /* Submenu mətn rəngi ağ */
+}
+#departmentsCollapse .list-group-item:hover {
+     background-color: #3B547C; /* Submenu hover rəngi */
+}
+
+
+#page-content-wrapper {
+    flex-grow: 1; /* Allow content area to take available space */
+    transition: margin-left .25s ease-out; /* padding-left yerinə margin-left ilə keçid */
+    min-width: 0; /* Allow shrinking */
+    overflow-x: hidden; /* Prevent horizontal scroll due to content */
+    
+    margin-left: 15rem; /* Sidebarın eni qədər boşluq qoyuruq */
+    padding-top: var(--header-height); /* Sabit navbardan sonra kontentin başlaması üçün */
+}
+
+/* Header Navbar */
+.navbar {
+    border-bottom: 1px solid #e9ecef;
+    padding-left: 1.5rem; 
+    padding-right: 1.5rem; 
+    margin-bottom: 0 !important; 
+    
+    position: fixed; /* Yuxarıda sabit qalması üçün */
+    width: calc(100% - 15rem); /* Sidebar'dan sonra qalan eni tutur */
+    top: 0; /* Yuxarıya yapışsın */
+    z-index: 1020; /* Digər kontentin üzərində görünməsi üçün */
+    
+    background-color: #eff3f7; /* Bir az tünd boz rəng */
+    padding-top: 0.8rem; /* Yuxarı padding-i artır */
+    padding-bottom: 0.8rem; /* Aşağı padding-i artır */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Kölgə */
+}
+
+/* Sidebar Gizləndikdə Navbar-ın eni dəyişir */
+#wrapper.toggled #page-content-wrapper .navbar {
+    width: 100%;
+}
+
+
+/* Navbar içərisindəki başlıq elementinin boşluğunu azaldırıq */
+.dashboard-navbar-spacing h2 {
+    margin: 0 !important; 
+    padding: 0 !important; 
+    line-height: 1 !important; 
+}
+
+/* Navbar içərisindəki ikon və başlıq div-inə də aid edilir */
+.dashboard-navbar-spacing .d-flex.align-items-center {
+    margin: 0 !important; 
+    padding: 0 !important; 
+}
+
+.primary-text {
+    color: #007bff; /* Primary blue */
+}
+
+.second-text {
+    color: #6c757d; /* Secondary text color */
+}
+
+.rounded-full {
+    border-radius: 50% !important;
+}
+
+/* Statistic cards */
+.p-3 {
+    padding: 1.5rem !important;
+}
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+/* --- Cədvəl Dizayn Tənzimləmələri --- */
+.table th, .table td {
+    vertical-align: top; /* Məlumatların yuxarıdan hizalanmasını təmin edir */
+    padding: 0.5rem 0.5rem !important; /* Paddingi daha da azaldırıq (Səliqəli görsənməsi üçün) */
+    table-layout: fixed; /* Bütün cədvəl üçün sütun enini sabitləyir */
+    word-wrap: break-word; /* Məzmunun hər yerdən qırılmasına icazə verir */
+    white-space: normal !important; /* Məzmunu yeni sətrə düşməyə məcbur edir */
+    font-size: 0.95rem; /* Mətn ölçüsünü bir az kiçildirik */
+    line-height: 1.2; /* Sətirlərarası məsafəni azaldırıq (daha yığcam) */
+}
+
+/* YENİ: Cədvəl Başlıqları üçün tənzimləmə */
+.table thead th {
+    white-space: normal !important; /* Başlıqlar da uzun olduqda qırılsın */
+    font-weight: bold;
+}
+
+/* Cədvəl sütunlarının enini sabitləyirik (Faiz cəmi 100% olmalıdır) */
+.table th:nth-child(1), .table td:nth-child(1) { /* # */
+    width: 3%;
+}
+.table th:nth-child(2), .table td:nth-child(2) { /* Sorğu Yazarı */
+    width: 10%;
+}
+.table th:nth-child(3), .table td:nth-child(3) { /* Şirkət Adı */
+    width: 9%;
+}
+.table th:nth-child(4), .table td:nth-child(4) { /* Yazılma Tarixi */
+    width: 8%;
+}
+.table th:nth-child(5), .table td:nth-child(5) { /* İcra Edən */
+    width: 10%;
+}
+.table th:nth-child(6), .table td:nth-child(6) { /* İcra Tarixi */
+    width: 8%;
+}
+.table th:nth-child(7), .table td:nth-child(7) { /* Məlumat */
+    width: 20%; 
+}
+.table th:nth-child(8), .table td:nth-child(8) { /* Qeydlər */
+    width: 20%; 
+}
+.table th:nth-child(9), .table td:nth-child(9) { /* Şöbə */
+    width: 7%;
+}
+.table th:nth-child(10), .table td:nth-child(10) { /* Vəziyyət */
+    width: 5%;
+}
+
+.badge {
+    padding: 0.6em 0.9em;
+    font-size: 0.85em;
+    white-space: nowrap; /* Badge bir sətirdə qalsın */
+}
+/* --- Cədvəl Dizayn Tənzimləmələri Sonu --- */
+
+
+/* Custom padding for main content area - Horizontal boşluq 150px oldu */
+.content-area-padding {
+    /* Horizontal padding kiçik ekranlarda azaldılır, beləliklə cədvəllər daha rahat görünür */
+    padding-left: 15px !important; 
+    padding-right: 15px !important; 
+    padding-top: 20px !important; /* Navbar altında biraz boşluq */
+    padding-bottom: 50px !important; /* Aşağıdan boşluq */
+}
+
+/* Chartların containerləri üçün eyni hündürlük məhdudiyyəti qoyuruq ki, responsive olsun */
+.chart-container {
+    height: 400px; /* Chartların hündürlüyünü sabitləyirik */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.chart-container canvas {
+    max-height: 90%;
+    max-width: 100%;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) { /* Tablet və mobil ekranlar üçün */
+    #sidebar-wrapper {
+        margin-left: -15rem; /* Hidden by default on small screens */
+        position: fixed; 
+        height: 100vh;
+        /* Z-index mobil görünüşdə navbarı bağlamaması üçün artırıldı */
+        z-index: 1030; 
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0; /* Show sidebar when toggled */
+    }
+    #page-content-wrapper {
+        margin-left: 0 !important; /* Mobile-da sidebar offset-i yoxdur */
+        width: 100%;
+        padding-top: var(--header-height); /* Mobile-da da sabit navbar üçün padding */
+    }
+    #wrapper.toggled #page-content-wrapper {
+        margin-left: 0; /* Sidebar açılanda contentin yerdəyişməsinə ehtiyac yoxdur */
+    }
+    #page-content-wrapper .navbar {
+        width: 100%; /* Mobile-da navbar tam eni tutur */
+    }
+    .content-area-padding {
+        padding-left: 1rem !important; 
+        padding-right: 1rem !important; 
+        padding-top: 10px !important; 
+    }
+    /* Kartların kiçik ekranlarda yan-yana 2 (sm) və ya tək (xs) görünməsi */
+    .col-md-3 {
+        width: 100%;
+    }
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px) { /* Geniş ekranlar üçün (laptop və desktop) */
+    #sidebar-wrapper {
+        margin-left: 0; 
+    }
+    #page-content-wrapper {
+        margin-left: 15rem; 
+        width: 100%; 
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+    #wrapper.toggled #page-content-wrapper {
+        margin-left: 0;
+    }
+    .content-area-padding {
+        /* 992px və daha böyük ekranlarda 150px padding saxlanılır */
+        padding-left: 150px !important; 
+        padding-right: 150px !important; 
+    }
+    /* Sidebar Gizləndikdə Contentin tam enə yayılması */
+    #wrapper.toggled #page-content-wrapper .navbar {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .chart-container {
+        height: 350px; /* Tablet-lər üçün hündürlüyü azaldırıq */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .chart-container {
+        height: 300px; /* Mobil cihazlar üçün hündürlüyü azaldırıq */
+    }
+}
+
+
+
+
+
+
+
+
+
