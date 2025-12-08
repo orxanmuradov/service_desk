@@ -1,0 +1,154 @@
+.sidebarWrapper {
+    width: 17rem;
+    /* Səliqəli görünüş üçün en bir az artırıldı */
+    min-width: 17rem;
+    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(180deg, #1a2942 0%, #152238 100%);
+    /* Soft gradient */
+    color: #ecf0f1;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Scrollbar dizaynı */
+.sidebarWrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebarWrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebarWrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+:global(.toggled) .sidebarWrapper {
+    margin-left: -17rem;
+}
+
+.sidebarHeading {
+    padding: 2rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listGroup {
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.listGroupItem {
+    background-color: transparent;
+    color: #aeb9cc !important;
+    /* Doyğun olmayan ağ rəng */
+    border: none !important;
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    border-left: 4px solid transparent;
+    /* Aktiv vəziyyət üçün border */
+}
+
+/* Hover effect */
+.listGroupItem:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+    padding-left: 2rem;
+    /* Hover zamanı sağa sürüşmə effekti */
+}
+
+/* Active State */
+.active {
+    background: linear-gradient(90deg, rgba(52, 152, 219, 0.15) 0%, transparent 100%) !important;
+    color: #3498db !important;
+    /* Mavi rəng */
+    border-left: 4px solid #3498db !important;
+}
+
+.listGroupItem i {
+    width: 24px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.active i {
+    color: #3498db;
+    transform: scale(1.1);
+}
+
+/* Chevron Icon Rotation */
+.chevron {
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+/* Submenu Styles */
+.listGroupSubItem {
+    padding: 0.7rem 1rem 0.7rem 3.8rem !important;
+    /* 3-cü səviyyə indent */
+    font-size: 0.9rem;
+    color: #8fa0bc !important;
+    border: none !important;
+    position: relative;
+}
+
+.listGroupSubItem::before {
+    content: '';
+    position: absolute;
+    left: 2.8rem;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.2s;
+}
+
+.listGroupSubItem:hover::before {
+    background-color: #3498db;
+}
+
+.listGroupSubItem:hover {
+    color: #fff !important;
+    background-color: transparent !important;
+    padding-left: 4rem !important;
+    /* Submenu hover sürüşməsi */
+}
+
+@media (max-width: 991.98px) {
+    .sidebarWrapper {
+        margin-left: -17rem;
+        z-index: 1030;
+    }
+
+    :global(.toggled) .sidebarWrapper {
+        margin-left: 0;
+    }
+}

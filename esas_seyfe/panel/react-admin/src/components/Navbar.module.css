@@ -1,0 +1,54 @@
+.navbar {
+    border-bottom: 1px solid #e9ecef;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 0 !important;
+
+    position: fixed;
+    width: calc(100% - 17rem);
+    /* Updated for 17rem sidebar */
+    top: 0;
+    z-index: 1020;
+
+    background-color: #eff3f7;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    transition: width .3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sidebar hidden: Navbar takes full width */
+:global(.toggled) .navbar {
+    width: 100% !important;
+}
+
+.dashboardTitle {
+    font-weight: 600;
+    color: #344767;
+}
+
+.menuToggle {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.menuToggle:hover {
+    color: #3498db;
+}
+
+.searchForm input {
+    border-radius: 20px;
+    padding-left: 1.2rem;
+    border: 1px solid #e0e6ed;
+}
+
+.searchForm button {
+    border-radius: 20px;
+}
+
+@media (max-width: 991.98px) {
+    .navbar {
+        width: 100%;
+    }
+}

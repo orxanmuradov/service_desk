@@ -1,0 +1,45 @@
+:root {
+    --header-height: 70px;
+    --sidebar-width: 17rem;
+    /* Updated width */
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.pageContentWrapper {
+    flex-grow: 1;
+    transition: margin-left .3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 0;
+    overflow-x: hidden;
+    margin-left: var(--sidebar-width);
+    padding-top: var(--header-height);
+}
+
+.contentAreaPadding {
+    padding-left: 100px !important;
+    /* Adjusted for wider sidebar */
+    padding-right: 100px !important;
+    padding-top: 20px !important;
+    padding-bottom: 50px !important;
+}
+
+:global(.toggled) .pageContentWrapper {
+    margin-left: 0;
+}
+
+@media (max-width: 991.98px) {
+    .pageContentWrapper {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+
+    .contentAreaPadding {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 10px !important;
+    }
+}
