@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="az">
 <head>
     <meta charset="UTF-8">
@@ -43,5 +43,88 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Giriş</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+     <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+            <h2 class="card-title text-center mb-4">Admin Panelə Giriş</h2>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">İstifadəçi Adı</label>
+                    <input type="text" class="form-control" id="username" placeholder="İstifadəçi adınızı daxil edin" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Parol</label>
+                    <input type="password" class="form-control" id="password" placeholder="Parolunuzu daxil edin" required>
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Məni xatırla</label>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" id="loginBtn">Giriş</button>
+                </div>
+                
+                <div id="loginMessage" class="alert alert-danger mt-3 d-none" role="alert"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="AuthService.js"></script>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Səhifənin yenilənməsinin qarşısını alır
+
+            const userInp = document.getElementById('username');
+            const passInp = document.getElementById('password');
+            const msgBox = document.getElementById('loginMessage');
+            const btn = document.getElementById('loginBtn');
+
+            // Mesaj qutusunu gizlət
+            msgBox.classList.add('d-none');
+            
+            // Düyməni deaktiv et (basılı qalmasın)
+            btn.disabled = true;
+            btn.textContent = "Giriş edilir...";
+
+            // AuthService vasitəsilə backend-ə sorğu göndər
+            const success = await AuthService.login(userInp.value, passInp.value);
+
+            if (success) {
+                // Uğurludursa Dashboarda yönləndir
+                window.location.href = "index.html";
+            } else {
+                // Uğursuzdursa xəta mesajı göstər
+                msgBox.textContent = "İstifadəçi adı və ya şifrə yanlışdır!";
+                msgBox.classList.remove('d-none');
+                
+                // Düyməni qaytar
+                btn.disabled = false;
+                btn.textContent = "Giriş";
+            }
+        });
+    </script>
 </body>
 </html>

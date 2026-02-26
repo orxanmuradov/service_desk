@@ -1,3 +1,10 @@
+
+// Əgər istifadəçi daxil olmayıbsa, dərhal login-ə at
+if (typeof AuthService !== 'undefined' && !AuthService.isAuthenticated()) {
+    window.location.href = "login.html";
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Dummy Data: Excel faylından gələcək məlumatları simulyasiya edirik
     // Sizin şəklinizə uyğun sıralama: ID, Sorğu Yazarı, Şirkət Adı, Yazılma Tarixi, İcra Edən, İcra Tarihi, Məlumat, Qeydlər, Şöbə, Vəziyyət
@@ -988,3 +995,88 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // END: Chart Funksiyaları
 }); // DOMContentLoaded end
+
+
+
+
+
+// ==========================================
+// YENİ ƏLAVƏ: BACKEND-DƏN MƏLUMAT ÇƏKMƏK
+// ==========================================
+
+const API_BASE_URL = "http://localhost:8080/api";
+
+// Səhifə tam açılanda bu funksiyanı işə sal
+document.addEventListener("DOMContentLoaded", () => {
+    // Əgər sənin yuxarıdakı kodunda başqa listenerlər varsa, bu onlara mane olmur
+    loadTickets(); 
+});
+
+async function loadTickets() {
+    const tableBody = document.querySelector("#requestTable tbody");
+    if (!tableBody) return; // Əgər cədvəl yoxdursa, heç nə etmə (xəta çıxmasın)
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/tickets`, {
+            method: "GET",
+            headers: AuthService.getAuthHeader()
+        });
+
+        if (response.status === 401) {
+            AuthService.logout(); // Token vaxtı bitibsə çıxış ver
+            return;
+        }
+
+        const tickets = await response.json();
+        
+        // Cədvəli təmizlə
+        tableBody.innerHTML = "";
+
+        if (tickets.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="10" class="text-center">Heç bir sorğu tapılmadı.</td></tr>`;
+            return;
+        }
+
+        // Cədvəli doldur
+        tickets.forEach((ticket, index) => {
+            const row = `
+                <tr>
+                    <th scope="row">${index + 1}</th>
+                    <td>${ticket.username || 'Admin'}</td>
+                    <td>${ticket.source || '-'}</td>
+                    <td>${formatDate(ticket.createdAt)}</td>
+                    <td>${ticket.assignedTo || '<span class="text-muted">Boş</span>'}</td>
+                    <td>${ticket.closedAt ? formatDate(ticket.closedAt) : '-'}</td>
+                    <td>${ticket.title}</td>
+                    <td class="text-truncate" style="max-width: 150px;">${ticket.description || '-'}</td>
+                    <td>${ticket.category || 'Ümumi'}</td>
+                    <td>${getStatusBadge(ticket.status)}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+        
+        // Kartlardakı rəqəmləri yenilə (əgər funksiya varsa)
+        if(typeof updateDashboardStats === 'function') {
+             updateDashboardStats(tickets);
+        }
+
+    } catch (error) {
+        console.error("Ticketləri gətirərkən xəta:", error);
+    }
+}
+
+// Köməkçi funksiyalar
+function getStatusBadge(status) {
+    let colorClass = "bg-secondary";
+    let text = status;
+    if (status === "OPEN") { colorClass = "bg-success"; text = "Açıq"; }
+    else if (status === "IN_PROGRESS") { colorClass = "bg-warning text-dark"; text = "İcrada"; }
+    else if (status === "CLOSED") { colorClass = "bg-danger"; text = "Bağlı"; }
+    return `<span class="badge ${colorClass}">${text}</span>`;
+}
+
+function formatDate(isoString) {
+    if (!isoString) return "-";
+    return new Date(isoString).toLocaleString('az-AZ');
+}
